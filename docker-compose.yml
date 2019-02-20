@@ -3,7 +3,7 @@ services:
   monetdb:
     image: monetdb/monetdb
     volumes:
-      - "./dbfarm:/var/monetdb5/dbfarm"
+            - "./dbfarm:/var/monetdb5/dbfarm:rw"
     ulimits:
       memlock:
         soft: -1
@@ -11,6 +11,6 @@ services:
     ports:
       - "50000:50000" 
   saiku:
-    image: saiku
+    image: tanquetav/saiku
     ports:
       - "8082:8082"
