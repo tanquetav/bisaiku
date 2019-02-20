@@ -1,0 +1,16 @@
+version: "3"
+services:
+  monetdb:
+    image: monetdb/monetdb
+    volumes:
+      - "./dbfarm:/var/monetdb5/dbfarm"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "50000:50000" 
+  saiku:
+    image: saiku
+    ports:
+      - "8082:8082"
