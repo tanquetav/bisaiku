@@ -1,0 +1,32 @@
+<Schema name="New Schema1">
+  <Cube name="Fact" visible="true" cache="true" enabled="true">
+    <Table name="fact_teste" schema="sys">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" foreignKey="date_fk" highCardinality="false" name="time">
+      <Hierarchy name="time" visible="true" hasAll="true" primaryKey="date_iso">
+        <Table name="dim_date" schema="sys">
+        </Table>
+        <Level name="ano" visible="true" column="YEAR" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="mes" visible="true" column="month_label" ordinalColumn="MONTH" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        </Level>
+        <Level name="dia" visible="true" column="DAY" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="faixa" highCardinality="false" name="faixa">
+      <Hierarchy name="faixa" visible="true" hasAll="true" primaryKey="faixa">
+        <Table name="dim_faixa" schema="sys">
+        </Table>
+        <Level name="faixa" visible="true" column="nome" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="qt" column="id" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="soma de valor pago" column="valor_pago" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="media do valor pago" column="valor_pago" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
